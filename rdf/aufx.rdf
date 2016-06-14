@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#LV2">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+    <rdfs:comment>LV2 plugin API.</rdfs:comment>
+    <rdfs:label>LV2</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#version">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#OperatingSystem"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+    <rdfs:label>version</rdfs:label>
+    <rdfs:comment>Specifies a version number.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Product"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#ProductFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#publisher">
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Product"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:comment>Associates a product or product family with a publisher, for instance an individual or a company.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#ProductFamily"/>
+    <rdfs:label>publisher</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Preset">
+    <rdfs:comment>A parameter settings preset.</rdfs:comment>
+    <rdfs:label>Preset</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#">
+    <dcterms:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
+    <owl:versionInfo>Revision: 1.0.1</owl:versionInfo>
+    <dc:rights>This ontology is distributed under a Creative Commons License - http://creativecommons.org/licenses/by-sa/4.0/</dc:rights>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dc:contributor>György Fazekas</dc:contributor>
+    <dc:creator>Thomas Wilmering</dc:creator>
+    <dcterms:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-06-12</dcterms:date>
+    <dcterms:title>The Audio Effect Ontology</dcterms:title>
+    <dc:description>The Audio Effect Ontology (AUFX-O) provides concepts and properties for describing audio effects in the context of music production in a studio environment. It provides means for describing effect implementations and their application within a music production project.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#parameter">
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#ParameterSetting"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+    <rdfs:comment>Associates an Transform with the output signal. </rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>parameter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#minimum_value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment>Specifies the minimum value of an effect parameter. </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+    <rdfs:label>minimum value</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt#value"/>
+    <rdfs:range rdf:resource="http://qudt.org/schema/qudt#QuantityValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#parameter_setting">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/studio/device/State"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Preset"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#ParameterSetting"/>
+    <rdfs:label>parameter setting</rdfs:label>
+    <owl:versionInfo>testing</owl:versionInfo>
+    <rdfs:comment>Associates a device state or implementation preset to a parameter setting.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#AAX">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>AAX Plugin API.</rdfs:comment>
+    <rdfs:label>AAX</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#preset">
+    <rdfs:domain rdf:resource="http://purl.org/ontology/studio/device/State"/>
+    <owl:versionInfo>testing</owl:versionInfo>
+    <rdfs:comment>Associates a device state with a preset. </rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Preset"/>
+    <rdfs:label>preset</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#effect">
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Device"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Associates an Implementation with a Device. </rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Transform"/>
+    <rdfs:label>device</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasAssociatedWith"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/studio/effect"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#output_signal">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/studio/device/generated_signal"/>
+    <rdfs:range rdf:resource="http://purl.org/ontology/mo/Signal"/>
+    <rdfs:label>output signal</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Transform"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Associates an Transform with the output signal. </rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#generated"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#NumericParameter">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+    <rdfs:label>Numeric Parameter</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An effect parameter set with numeric values. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#PlugIn">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#SoftwareImplementation"/>
+    <rdfs:comment>A software plugin implementation of an effect model. </rdfs:comment>
+    <owl:versionInfo>testing</owl:versionInfo>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PlugIn</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#PresetBank">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Preset Bank</rdfs:label>
+    <rdfs:comment>Parameter settings presets may be bundled in a preset bank.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#implements_model">
+    <rdfs:label>implements model</rdfs:label>
+    <rdfs:comment>Associates an Implementation with a Model. </rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Model"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#device">
+    <rdfs:label>device</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Device"/>
+    <rdfs:comment>Associates an Implementation with a Device. </rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/studio/device/exemplar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#operating_system">
+    <rdfs:comment>Associates an implementation to an operating system.</rdfs:comment>
+    <rdfs:label>operating system</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#OperatingSystem"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#LADSPA">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+    <rdfs:label>LADSPA</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>LADSPA plugin API.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#unit">
+    <rdfs:comment>Associates a numeric effect parameter with its specified (standard) unit. </rdfs:comment>
+    <rdfs:label>unit</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#NumericParameter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://qudt.org/schema/qudt#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#maximum_value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>maximum value</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt#value"/>
+    <rdfs:range rdf:resource="http://qudt.org/schema/qudt#QuantityValue"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment>Specifies the maximum value of an effect parameter. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#device_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>device of</rdfs:label>
+    <rdfs:comment>Associates an Implementation with a Device. </rdfs:comment>
+    <owl:inverseOf rdf:resource="https://w3id.org/aufx/ontology/1.0#device"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Product">
+    <rdfs:comment>A Product for the distribution of audio effect devices.</rdfs:comment>
+    <rdfs:label>Product</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#has_parameter">
+    <rdfs:comment>Associates an Implementation with a Parameter. </rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has parameter</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#product">
+    <rdfs:label>product</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Product"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Associates an Implementation with a Product.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#implementation">
+    <rdfs:label>implementation</rdfs:label>
+    <rdfs:comment>Associates an Effect with an Implementation. </rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Effect"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#model">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/studio/device/representation"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Model"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Effect"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>model</rdfs:label>
+    <rdfs:comment>Associates an Effect with a Model. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#implementation_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Associates an Implementation with an Effect. </rdfs:comment>
+    <owl:inverseOf rdf:resource="https://w3id.org/aufx/ontology/1.0#device"/>
+    <rdfs:label>implementation of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Effect">
+    <owl:disjointWith rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/studio/device/Phenomenon"/>
+    <rdfs:comment>An audio effect conceptualised as an abstract physical phenomenon. </rdfs:comment>
+    <rdfs:label>Effect</rdfs:label>
+    <owl:disjointWith rdf:resource="https://w3id.org/aufx/ontology/1.0#Model"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#default_value">
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+    <rdfs:range rdf:resource="http://qudt.org/schema/qudt#QuantityValue"/>
+    <rdfs:comment>Specifies the default value of an effect parameter. </rdfs:comment>
+    <rdfs:label>default value</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt#value"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#input_signal">
+    <rdfs:range rdf:resource="http://purl.org/ontology/mo/Signal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#used"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Associates an Transform with the input signal. </rdfs:comment>
+    <rdfs:label>input signal</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/studio/device/consumed_signal"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Transform"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#ParameterSetting">
+    <rdfs:comment>An effect parameter setting. </rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Parameter Setting</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Model">
+    <rdfs:comment>An algorithm or mechanism that reproduces an effect can be described as a model that approximates the perceived effect. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/studio/device/Model"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Model</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#has_preset">
+    <rdfs:label>has preset</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Preset"/>
+    <rdfs:comment>Associates an audio effect implementation with a preset. </rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <owl:propertyChainAxiom rdf:nodeID="f79894f900c4e4406987c7ea1313d9f55b1"/>
+    <owl:versionInfo>testing</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#OperatingSystem">
+    <rdfs:label>Operating System</rdfs:label>
+    <rdfs:comment>The operating system for a software implementation. </rdfs:comment>
+    <owl:versionInfo>testing</owl:versionInfo>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#developer">
+    <rdfs:comment>Associates an implementation with a developer</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdfs:label>developer</rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#bank_preset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#PresetBank"/>
+    <rdfs:label>bank preset</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#Preset"/>
+    <rdfs:comment>Associates a preset bank with a containing preset.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Parameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A variable parameter to control the effect. </rdfs:comment>
+    <rdfs:label>Parameter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#VST">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+    <rdfs:label>VST</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>VST PlugIn API.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#product_family">
+    <rdfs:label>product family</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Product"/>
+    <rdfs:comment>Associates a Product with a Product Family.</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#ProductFamily"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Device">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/studio/device/Device"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/aufx/ontology/1.0#Effect"/>
+    <rdfs:label>Device</rdfs:label>
+    <owl:disjointWith rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An instance of an implementation. </rdfs:comment>
+    <owl:disjointWith rdf:resource="https://w3id.org/aufx/ontology/1.0#Model"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#plugin_api">
+    <rdfs:label>plugin api</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment>Associates a software plugin implementation with its plugin API.</rdfs:comment>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#preset_bank">
+    <rdfs:comment> Associates a preset bank with an audio effect implementation.</rdfs:comment>
+    <rdfs:label>preset bank</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/aufx/ontology/1.0#PresetBank"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#ProductFamily">
+    <rdfs:label>Product Family</rdfs:label>
+    <rdfs:comment>A unified family of products.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#PlugInAPI">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>the plugin API of a software plugin implementation . </rdfs:comment>
+    <rdfs:label>PlugIn API</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Implementation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An implementation of an effect model. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/studio/device/Implementation"/>
+    <owl:disjointWith rdf:resource="https://w3id.org/aufx/ontology/1.0#Model"/>
+    <rdfs:label>Implementation</rdfs:label>
+    <owl:versionInfo>testing</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#name">
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#PresetBank"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Preset"/>
+    <rdfs:comment>Specifies the given name of a product family, product, preset, preset bank or implementation.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#ProductFamily"/>
+    <rdfs:domain rdf:resource="https://w3id.org/aufx/ontology/1.0#Product"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#AudioUnit">
+    <rdfs:comment>A concept for an audio effect implemented as an Audio Unit plugin. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+    <rdfs:label>Audio Unit</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#Transform">
+    <rdfs:label>Transform</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/studio/Transform"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An audio transformation applied to a signal by an audio effect. </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#SoftwareImplementation">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#Implementation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:versionInfo>testing</owl:versionInfo>
+    <rdfs:comment>A software implementation of an effect model. </rdfs:comment>
+    <rdfs:label>Software Implementation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#IndexParameter">
+    <rdfs:label>Index Parameter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#Parameter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An effect parameter set with values from an indexed list . </rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="f79894f900c4e4406987c7ea1313d9f55b1">
+    <rdf:rest rdf:nodeID="f79894f900c4e4406987c7ea1313d9f55b2"/>
+    <rdf:first rdf:resource="https://w3id.org/aufx/ontology/1.0#preset_bank"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/aufx/ontology/1.0#DSSI">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>DSSI Plugin API. </rdfs:comment>
+    <rdfs:label>DSSI</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/aufx/ontology/1.0#PlugInAPI"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="f79894f900c4e4406987c7ea1313d9f55b2">
+    <rdf:first rdf:resource="https://w3id.org/aufx/ontology/1.0#bank_preset"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+</rdf:RDF>

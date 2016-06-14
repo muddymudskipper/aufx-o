@@ -1,0 +1,767 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mo: <http://purl.org/ontology/mo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix aufx: <https://w3id.org/aufx/ontology/1.0#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix device: <http://purl.org/ontology/studio/device/> .
+@prefix studio: <http://purl.org/ontology/studio/> .
+@base <https://w3id.org/aufx/ontology/1.0#> .
+
+<https://w3id.org/aufx/ontology/1.0#> rdf:type owl:Ontology ;
+                                     
+                                     dc:description "The Audio Effect Ontology (AUFX-O) provides concepts and properties for describing audio effects in the context of music production in a studio environment. It provides means for describing effect implementations and their application within a music production project." ;
+                                     
+                                     owl:versionInfo "Revision: 1.0.1" ;
+                                     
+                                     dcterms:title "The Audio Effect Ontology" ;
+									 
+									 dcterms:date "2016-06-12"^^xsd:date ;
+                                     
+                                     dcterms:license <http://creativecommons.org/licenses/by-sa/4.0/> ;
+									 
+									 dc:rights "This ontology is distributed under a Creative Commons License - http://creativecommons.org/licenses/by-sa/4.0/" ;
+									 
+									 dc:creator "Thomas Wilmering" ;
+									 
+									 dc:contributor "György Fazekas" .
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#bank_preset
+
+aufx:bank_preset rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "bank preset" ;
+                 
+                 rdfs:comment "Associates a preset bank with a containing preset." ;
+                 
+                 rdfs:range aufx:Preset ;
+                 
+                 rdfs:domain aufx:PresetBank .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#default_value
+
+aufx:default_value rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:label "default value" ;
+                   
+                   rdfs:comment "Specifies the default value of an effect parameter. " ;
+                   
+                   rdfs:range qudt:QuantityValue ;
+                   
+                   rdfs:subPropertyOf qudt:value ;
+                   
+                   rdfs:domain aufx:Parameter .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#developer
+
+aufx:developer rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "developer" ;
+               
+               rdfs:comment "Associates an implementation with a developer" ;
+               
+               rdfs:domain aufx:Implementation ;
+               
+               rdfs:range foaf:Agent .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#device
+
+aufx:device rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "device" ;
+            
+            rdfs:comment "Associates an Implementation with a Device. " ;
+            
+            rdfs:subPropertyOf device:exemplar ;
+            
+            rdfs:range aufx:Device ;
+            
+            rdfs:domain aufx:Implementation .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#device_of
+
+aufx:device_of rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "device of" ;
+               
+               rdfs:comment "Associates an Implementation with a Device. " ;
+               
+               owl:inverseOf aufx:device .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#effect
+
+aufx:effect rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "device" ;
+            
+            rdfs:comment "Associates an Implementation with a Device. " ;
+            
+            rdfs:subPropertyOf studio:effect ;
+            
+            rdfs:range aufx:Device ;
+            
+            rdfs:domain aufx:Transform ;
+            
+            rdfs:subPropertyOf prov:wasAssociatedWith .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#has_parameter
+
+aufx:has_parameter rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has parameter" ;
+                   
+                   rdfs:comment "Associates an Implementation with a Parameter. " ;
+                   
+                   rdfs:domain aufx:Implementation ;
+                   
+                   rdfs:range aufx:Parameter .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#has_preset
+
+aufx:has_preset rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has preset" ;
+                
+                owl:versionInfo "testing" ;
+                
+                rdfs:comment "Associates an audio effect implementation with a preset. " ;
+                
+                rdfs:domain aufx:Implementation ;
+                
+                rdfs:range aufx:Preset ;
+                
+                owl:propertyChainAxiom ( aufx:preset_bank
+                                         aufx:bank_preset
+                                       ) .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#implementation
+
+aufx:implementation rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "implementation" ;
+                    
+                    rdfs:comment "Associates an Effect with an Implementation. " ;
+                    
+                    rdfs:domain aufx:Effect ;
+                    
+                    rdfs:range aufx:Implementation .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#implementation_of
+
+aufx:implementation_of rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "implementation of" ;
+                       
+                       rdfs:comment "Associates an Implementation with an Effect. " ;
+                       
+                       owl:inverseOf aufx:device .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#implements_model
+
+aufx:implements_model rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "implements model" ;
+                      
+                      rdfs:comment "Associates an Implementation with a Model. " ;
+                      
+                      rdfs:domain aufx:Implementation ;
+                      
+                      rdfs:range aufx:Model .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#input_signal
+
+aufx:input_signal rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "input signal" ;
+                  
+                  rdfs:comment "Associates an Transform with the input signal. " ;
+                  
+                  rdfs:range mo:Signal ;
+                  
+                  rdfs:subPropertyOf device:consumed_signal ;
+                  
+                  rdfs:domain aufx:Transform ;
+                  
+                  rdfs:subPropertyOf prov:used .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#maximum_value
+
+aufx:maximum_value rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:label "maximum value" ;
+                   
+                   rdfs:comment "Specifies the maximum value of an effect parameter. " ;
+                   
+                   rdfs:range qudt:QuantityValue ;
+                   
+                   rdfs:subPropertyOf qudt:value ;
+                   
+                   rdfs:domain aufx:Parameter .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#minimum_value
+
+aufx:minimum_value rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:label "minimum value" ;
+                   
+                   rdfs:comment "Specifies the minimum value of an effect parameter. " ;
+                   
+                   rdfs:range qudt:QuantityValue ;
+                   
+                   rdfs:subPropertyOf qudt:value ;
+                   
+                   rdfs:domain aufx:Parameter .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#model
+
+aufx:model rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "model" ;
+           
+           rdfs:comment "Associates an Effect with a Model. " ;
+           
+           rdfs:subPropertyOf device:representation ;
+           
+           rdfs:domain aufx:Effect ;
+           
+           rdfs:range aufx:Model .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#operating_system
+
+aufx:operating_system rdf:type owl:FunctionalProperty ,
+                               owl:ObjectProperty ;
+                      
+                      rdfs:label "operating system" ;
+                      
+                      rdfs:comment "Associates an implementation to an operating system." ;
+                      
+                      rdfs:domain aufx:Implementation ;
+                      
+                      rdfs:range aufx:OperatingSystem .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#output_signal
+
+aufx:output_signal rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "output signal" ;
+                   
+                   rdfs:comment "Associates an Transform with the output signal. " ;
+                   
+                   rdfs:range mo:Signal ;
+                   
+                   rdfs:subPropertyOf device:generated_signal ;
+                   
+                   rdfs:domain aufx:Transform ;
+                   
+                   rdfs:subPropertyOf prov:generated .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#parameter
+
+aufx:parameter rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "parameter" ;
+                   
+                   rdfs:comment "Associates an Transform with the output signal. " ;
+                   
+                   rdfs:range aufx:Parameter ;
+                   
+                   rdfs:domain aufx:ParameterSetting .
+###  http://w3id.org/aufx/ontology/1.0#parameter_setting
+
+aufx:parameter_setting rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "parameter setting" ;
+                       
+                       rdfs:comment "Associates a device state or implementation preset to a parameter setting." ;
+                       
+                       owl:versionInfo "testing" ;
+                       
+                       rdfs:domain device:State ;
+                       
+                       rdfs:range aufx:ParameterSetting ;
+                       
+                       rdfs:domain aufx:Preset .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#plugin_api
+
+aufx:plugin_api rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:label "plugin api" ;
+                
+                rdfs:comment "Associates a software plugin implementation with its plugin API." ;
+                
+                rdfs:domain aufx:Implementation ;
+                
+                rdfs:range aufx:PlugInAPI .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#preset
+
+aufx:preset rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "preset" ;
+            
+            rdfs:comment "Associates a device state with a preset. " ;
+            
+            owl:versionInfo "testing" ;
+            
+            rdfs:domain device:State ;
+            
+            rdfs:range aufx:Preset .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#preset_bank
+
+aufx:preset_bank rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "preset bank" ;
+                 
+                 rdfs:comment " Associates a preset bank with an audio effect implementation." ;
+                 
+                 rdfs:domain aufx:Implementation ;
+                 
+                 rdfs:range aufx:PresetBank .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#product
+
+aufx:product rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "product" ;
+             
+             rdfs:comment "Associates an Implementation with a Product." ;
+             
+             rdfs:domain aufx:Implementation ;
+             
+             rdfs:range aufx:Product .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#product_family
+
+aufx:product_family rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "product family" ;
+                    
+                    rdfs:comment "Associates a Product with a Product Family." ;
+                    
+                    rdfs:domain aufx:Product ;
+                    
+                    rdfs:range aufx:ProductFamily .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#publisher
+
+aufx:publisher rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "publisher" ;
+               
+               rdfs:comment "Associates a product or product family with a publisher, for instance an individual or a company." ;
+               
+               rdfs:domain aufx:Product ,
+                           aufx:ProductFamily ;
+               
+               rdfs:range foaf:Agent .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#unit
+
+aufx:unit rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "unit" ;
+          
+          rdfs:comment "Associates a numeric effect parameter with its specified (standard) unit. " ;
+          
+          rdfs:range qudt:Unit ;
+          
+          rdfs:domain aufx:NumericParameter .
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://w3id.org/aufx/ontology/1.0#name
+
+aufx:name rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain aufx:Preset ,
+                      aufx:PresetBank ,
+                      aufx:Product ,
+                      aufx:ProductFamily ;
+          
+          rdfs:comment "Specifies the given name of a product family, product, preset, preset bank or implementation." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#version
+
+aufx:version rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:label "version" ;
+             
+             rdfs:comment "Specifies a version number." ;
+             
+             rdfs:domain aufx:Implementation ,
+                         aufx:OperatingSystem ,
+                         aufx:PlugInAPI ,
+                         aufx:Product ,
+                         aufx:ProductFamily .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#AAX
+
+aufx:AAX rdf:type owl:Class ;
+         
+         rdfs:label "AAX" ;
+         
+         rdfs:subClassOf aufx:PlugInAPI ;
+         
+         rdfs:comment "AAX Plugin API." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#AudioUnit
+
+aufx:AudioUnit rdf:type owl:Class ;
+               
+               rdfs:label "Audio Unit" ;
+               
+               rdfs:subClassOf aufx:PlugInAPI ;
+               
+               rdfs:comment "A concept for an audio effect implemented as an Audio Unit plugin. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#DSSI
+
+aufx:DSSI rdf:type owl:Class ;
+          
+          rdfs:label "DSSI" ;
+          
+          rdfs:subClassOf aufx:PlugInAPI ;
+          
+          rdfs:comment "DSSI Plugin API. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Device
+
+aufx:Device rdf:type owl:Class ;
+            
+            rdfs:label "Device" ;
+            
+            rdfs:subClassOf device:Device ,
+                            prov:Agent ;
+            
+            owl:disjointWith aufx:Effect ,
+                             aufx:Implementation ,
+                             aufx:Model ;
+            
+            rdfs:comment "An instance of an implementation. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Effect
+
+aufx:Effect rdf:type owl:Class ;
+            
+            rdfs:label "Effect" ;
+            
+            rdfs:subClassOf device:Phenomenon ;
+            
+            owl:disjointWith aufx:Implementation ,
+                             aufx:Model ;
+            
+            rdfs:comment "An audio effect conceptualised as an abstract physical phenomenon. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Implementation
+
+aufx:Implementation rdf:type owl:Class ;
+                    
+                    rdfs:label "Implementation" ;
+                    
+                    rdfs:subClassOf device:Implementation ;
+                    
+                    owl:disjointWith aufx:Model ;
+                    
+                    rdfs:comment "An implementation of an effect model. " ;
+                    
+                    owl:versionInfo "testing" .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#IndexParameter
+
+aufx:IndexParameter rdf:type owl:Class ;
+                    
+                    rdfs:label "Index Parameter" ;
+                    
+                    rdfs:subClassOf aufx:Parameter ;
+                    
+                    rdfs:comment "An effect parameter set with values from an indexed list . " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#LADSPA
+
+aufx:LADSPA rdf:type owl:Class ;
+            
+            rdfs:label "LADSPA" ;
+            
+            rdfs:subClassOf aufx:PlugInAPI ;
+            
+            rdfs:comment "LADSPA plugin API." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#LV2
+
+aufx:LV2 rdf:type owl:Class ;
+         
+         rdfs:label "LV2" ;
+         
+         rdfs:subClassOf aufx:PlugInAPI ;
+         
+         rdfs:comment "LV2 plugin API." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Model
+
+aufx:Model rdf:type owl:Class ;
+           
+           rdfs:label "Model" ;
+           
+           rdfs:subClassOf device:Model ;
+           
+           rdfs:comment "An algorithm or mechanism that reproduces an effect can be described as a model that approximates the perceived effect. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#NumericParameter
+
+aufx:NumericParameter rdf:type owl:Class ;
+                      
+                      rdfs:label "Numeric Parameter" ;
+                      
+                      rdfs:subClassOf aufx:Parameter ;
+                      
+                      rdfs:comment "An effect parameter set with numeric values. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#OperatingSystem
+
+aufx:OperatingSystem rdf:type owl:Class ;
+                     
+                     rdfs:label "Operating System" ;
+                     
+                     owl:versionInfo "testing" ;
+                     
+                     rdfs:comment "The operating system for a software implementation. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Parameter
+
+aufx:Parameter rdf:type owl:Class ;
+               
+               rdfs:label "Parameter" ;
+               
+               rdfs:comment "A variable parameter to control the effect. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#ParameterSetting
+
+aufx:ParameterSetting rdf:type owl:Class ;
+                      
+                      rdfs:label "Parameter Setting" ;
+                      
+                      rdfs:comment "An effect parameter setting. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#PlugIn
+
+aufx:PlugIn rdf:type owl:Class ;
+            
+            rdfs:label "PlugIn" ;
+            
+            rdfs:subClassOf aufx:SoftwareImplementation ;
+            
+            rdfs:comment "A software plugin implementation of an effect model. " ;
+            
+            owl:versionInfo "testing" .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#PlugInAPI
+
+aufx:PlugInAPI rdf:type owl:Class ;
+               
+               rdfs:label "PlugIn API" ;
+               
+               rdfs:comment "the plugin API of a software plugin implementation . " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Preset
+
+aufx:Preset rdf:type owl:Class ;
+            
+            rdfs:label "Preset" ;
+            
+            rdfs:comment "A parameter settings preset." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#PresetBank
+
+aufx:PresetBank rdf:type owl:Class ;
+                
+                rdfs:label "Preset Bank" ;
+                
+                rdfs:comment "Parameter settings presets may be bundled in a preset bank." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Product
+
+aufx:Product rdf:type owl:Class ;
+             
+             rdfs:label "Product" ;
+             
+             rdfs:comment "A Product for the distribution of audio effect devices." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#ProductFamily
+
+aufx:ProductFamily rdf:type owl:Class ;
+                   
+                   rdfs:label "Product Family" ;
+                   
+                   rdfs:comment "A unified family of products." .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#SoftwareImplementation
+
+aufx:SoftwareImplementation rdf:type owl:Class ;
+                            
+                            rdfs:label "Software Implementation" ;
+                            
+                            rdfs:subClassOf aufx:Implementation ;
+                            
+                            owl:versionInfo "testing" ;
+                            
+                            rdfs:comment "A software implementation of an effect model. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#Transform
+
+aufx:Transform rdf:type owl:Class ;
+               
+               rdfs:label "Transform" ;
+               
+               rdfs:subClassOf studio:Transform ,
+                               prov:Activity ;
+               
+               rdfs:comment "An audio transformation applied to a signal by an audio effect. " .
+
+
+
+###  http://w3id.org/aufx/ontology/1.0#VST
+
+aufx:VST rdf:type owl:Class ;
+         
+         rdfs:label "VST" ;
+         
+         rdfs:subClassOf aufx:PlugInAPI ;
+         
+         rdfs:comment "VST PlugIn API." .
