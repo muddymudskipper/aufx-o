@@ -5,7 +5,9 @@ The Audio Effect Ontology (AUFX-O) provides concepts and properties for describi
 
 https://w3id.org/aufx/ontology/1.0#
 
-see also:
+contact:
 http://isophonics.net/content/aufx
 
+zenodo:
+http://dx.doi.org/10.5281/zenodo.55561
 
