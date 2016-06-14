@@ -9,4 +9,4 @@ https://w3id.org/aufx/ontology/1.0#
 contact:
 http://isophonics.net/content/aufx
 
-[![DOI](https://zenodo.org/badge/22670/muddymudskipper/aufx-o.svg)](https://zenodo.org/badge/latestdoi/22670/muddymudskipper/aufx-o)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.55566.svg)](http://dx.doi.org/10.5281/zenodo.55566)
