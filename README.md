@@ -9,5 +9,5 @@ contact:
 http://isophonics.net/content/aufx
 
 zenodo:
-http://dx.doi.org/10.5281/zenodo.55561
+https://zenodo.org/record/55561
 
