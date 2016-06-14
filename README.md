@@ -12,3 +12,4 @@ http://isophonics.net/content/aufx
 zenodo:
 https://zenodo.org/record/55561
 
+[![DOI](https://zenodo.org/badge/22670/muddymudskipper/aufx-o.svg)](https://zenodo.org/badge/latestdoi/22670/muddymudskipper/aufx-o)
