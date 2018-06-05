@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/aufx/ontology/1.0# .
+@prefix : <https://w3id.org/aufx/ontology/1.0#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix mo: <http://purl.org/ontology/mo/> .
